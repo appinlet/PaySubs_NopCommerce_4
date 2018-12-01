@@ -1,0 +1,82 @@
+﻿@{
+    Layout = "_ConfigurePlugin";
+}
+@using Nop.Web.Framework;
+@using Nop.Plugin.Payments.PaySubs.Models;
+@model PaySubsPaymentModel
+
+@await Component.InvokeAsync("StoreScopeConfiguration")
+
+<form asp-controller="PaySubsPayment" asp-action="Configure" method="post">
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="HashParameter" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="HashParameter" />
+                        <span asp-validation-for="HashParameter"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="TerminalId" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="TerminalId" />
+                        <span asp-validation-for="TerminalId"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="AdditionalFee" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="AdditionalFee" />
+                        <span asp-validation-for="AdditionalFee"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="Instruction" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="Instruction" />
+                        <span asp-validation-for="Instruction"></span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @*<nop-override-store-checkbox asp-for="RecurringPayments_OverrideForStore" asp-input="RecurringPayments" asp-store-scope="@{@Model.RecurringPayments ? 1 : 0}" />*@
+                        <nop-label asp-for="RecurringPayments" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="RecurringPayments" />
+                        
+                        <span asp-validation-for="@Model.RecurringPayments"></span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="RecurrenceFrequency" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-select asp-for="RecurrenceFrequency" asp-items="@Model.RecurrenceFrequencies" />
+                        <span asp-validation-for="RecurrenceFrequency"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-9 col-md-offset-3">
+                        <input type="submit" name="save" class="btn bg-primary" value="@T("Admin.Common.Save")" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
