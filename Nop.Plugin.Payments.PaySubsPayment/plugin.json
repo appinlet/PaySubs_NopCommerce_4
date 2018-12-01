@@ -2,7 +2,7 @@
   "Group": "Payment methods",
   "FriendlyName": "PaySubs",
   "SystemName": "Payments.PaySubs",
-  "Version": "4.1.0",
+  "Version": "1.0.0",
   "SupportedVersions": [ "4.10" ],
   "Author": "App Inlet (Pty) Ltd",
   "DisplayOrder": 1,
